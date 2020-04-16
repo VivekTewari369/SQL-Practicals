@@ -8,7 +8,7 @@ Consists SQL queries which are a part of DBMS Practicals of College Coursework
 
 Name: Vivek Tewari 
 Course: Bsc(H) Statistics 
-Roll No: 20191242 
+Roll: 20191242 
 
 
 
