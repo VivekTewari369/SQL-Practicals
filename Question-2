@@ -16,16 +16,16 @@ mysql> create table PaperDetails(
 
 mysql> create table Academic_Details(
     -> Roll_no int primary key,
-    -> Paper_code int not null,
+    -> PaperCode int not null,
     -> Attendence int not null,
     -> Marks int not null,
     -> foreign key(Roll_no) references StudentPersonalInfo(Roll_no),
     -> foreign key(PaperCode) references PaperDetails(PaperCode));
 
- // (a) Primary key - Roll_no in table StudentPersonalInfo
-//                                PaperCode in table PaperDetails
+// (a) Primary key - Roll_no in table StudentPersonalInfo
+//                   PaperCode in table PaperDetails
 //        Foreign key - Roll_no in table Academic_Details
-//                                PaperCode in table Academic_Details 
+//                      PaperCode in table Academic_Details 
 
 mysql> insert into StudentPersonalInfo values(1240,"Vinay Kumar Singh",'2001-01-04',"UP",91,9102829875);
 mysql> insert into StudentPersonalInfo values(1233,"Rohit Tiwari",'2001-04-29',"Uttarakhand",89,9748483743);
@@ -45,12 +45,12 @@ mysql> insert into Academic_details values(1204,2,65,91);
 mysql> insert into Academic_details values(1225,2,65,91);
 mysql> insert into Academic_details values(1223,1,75,65);
 
-(b) mysql> select pd.PaperCode, pd.PaperName, pi.name from PaperDetails as pd, StudentPersonalInfo as pi where PaperCode=2 and pi.Roll_no in(select Roll_no from Academic_Details where PaperCode=2 and Attendence>75 and Marks>60);
+(b) mysql> select pd.PaperCode, pd.PaperName, pi.Name from PaperDetails as pd, StudentPersonalInfo as pi where PaperCode=2 and pi.Roll_no in(select Roll_no from Academic_Details where PaperCode=2 and Attendence>75 and Marks>60);
 
-(c) mysql> select name from StudentPersonalInfo as pi, academic_details as ad where pi.Roll_no=ad.Roll_no and ad.Marks>60 and ad.paper_code=1;
+(c) mysql> select name from StudentPersonalInfo as pi, Academic_Details as ad where pi.Roll_no=ad.Roll_no and ad.Marks>60 and ad.PaperCode=1;
 
-(d) mysql> select pi.name, ad.attendence, ad.marks from StudentPersonalInfo as pi, academic_details as ad where pi.roll_no=ad.roll_no;
+(d) mysql> select pi.Name, ad.Attendence, ad.Marks from StudentPersonalInfo as pi, Academic_Details as ad where pi.Roll_no=ad.Roll_no;
 
-(e) mysql> select name from SudentPersonalInfo as pi, Academic_Details as ad where pi.Roll_no=ad.Roll_no and pi.Roll_no=(select Roll_no from Academic_Details where marks=(select max(marks) from Academic_Details));
+(e) mysql> select Name from SudentPersonalInfo as pi, Academic_Details as ad where pi.Roll_no=ad.Roll_no and pi.Roll_no=(select Roll_no from Academic_Details where marks=(select max(Marks) from Academic_Details));
 
 --------------------------------------------
